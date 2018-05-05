@@ -48,14 +48,14 @@
     <div id="win-screen">
         <h1>ניצחת</h1>
         <h2>הצלחת לעקוף את הסלג'וקים ולכבוש את ירושלים!</h2>
-        <button onclick="location.reload()">התחל מחדש</button>
+        <button onclick="window.location = window.location.split('#')[0] + '#game-container';location.reload();">התחל מחדש</button>
     </div>
     <div id="lose-screen">
         <h1>הפסדת</h1>
         <h2>כי
             <span id="lose-reason"></span>
         </h2>
-        <button onclick="location.reload()">נסה שוב</button>
+        <button onclick="window.location = window.location.toString().split('#')[0] + '#game-container';location.reload();">נסה שוב</button>
     </div>
     <div id="tutorial">
         <div class="page-content">
