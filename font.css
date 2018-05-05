@@ -3,14 +3,6 @@
   font-family: 'txt';
   font-style: normal;
   font-weight: 400;
-  src: local("Varela Round Regular"), local("VarelaRound-Regular"), url(font.woff2) format("woff2");
-}
-
-/* latin */
-@font-face {
-  font-family: 'txt';
-  font-style: normal;
-  font-weight: 400;
-  src: local("Varela Round Regular"), local("VarelaRound-Regular"), url(font.woff2) format("woff2");
+  src: local("Varela Round Regular"), local("VarelaRound-Regular"), url(https://fonts.gstatic.com/s/varelaround/v9/w8gdH283Tvk__Lua32TysjIfpcuPP9g.woff2) format("woff2");
 }
 /*# sourceMappingURL=font.css.map */
