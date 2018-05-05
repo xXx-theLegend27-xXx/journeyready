@@ -1,3 +1,4 @@
 *.map
 Thumbs.db
 /.vscode/*
+server.js
