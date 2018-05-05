@@ -1,5 +1,44 @@
 // HELPER FUNCTIONS
 
+// keyboard api
+var Shortcuts = {
+    "N": function () {
+        document.getElementById("dictionary").classList.toggle("show");
+    }
+};
+var pressedKeys = {};
+
+function addKey(e) {
+    pressedKeys[(e.keyCode || e.which)] = true;
+    // check for shortcuts
+    for (var shortcut in Shortcuts) {
+        console.log(shortcut);
+        var success = true;
+        for (var i = 0; i < shortcut.length; i++) {
+            var key = shortcut.charCodeAt(i);
+            console.log(key);
+            console.log(pressedKeys);
+            console.log(pressedKeys[key]);
+            if (pressedKeys[key] === undefined) {
+                // not this shortcut
+                success = false;
+                break;
+            }
+        }
+        if (success) {
+            // this is an active shortcut
+            Shortcuts[shortcut]();
+        }
+    }
+}
+
+function removeKey(e) {
+    delete pressedKeys[(e.keyCode || e.which)];
+}
+
+window.addEventListener("keydown", addKey);
+window.addEventListener("keyup", removeKey);
+
 // returns true or false randomally
 // the argument is the probability of true (1 is always true, 0 is always false)
 
