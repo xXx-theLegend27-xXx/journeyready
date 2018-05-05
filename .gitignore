@@ -1,2 +1,3 @@
 *.map
 Thumbs.db
+/.vscode/*
