@@ -104,6 +104,20 @@ function calculateBars() {
     if (Game.bars.land.value <= 0) {
         reasons.push("לא היה לך שטח");
     }
+    if (Game.bars.enemy.value >= 100) {
+        reasons.push("הסלג'וקים בלתי מנוצחים");
+    }
+    // check for empty CardDecks
+    var deckCount = 0;
+    for (var d = 0; d < CardDecks.length; d++) {
+        if (CardDecks[d].cards.length != 0) {
+            deckCount += 1;
+        }
+    }
+    if (deckCount == 0) {
+        // no decks to use!
+        reasons.push("נגמרו לך הקלפים");
+    }
 
     if (reasons.length != 0) {
         showLoss(reasons.join(" ו"));
