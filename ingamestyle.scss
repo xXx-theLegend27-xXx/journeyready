@@ -2,7 +2,7 @@
 @import "mixins.scss";
 @import "bars.scss";
 @import "dictionary.scss";
-@import url("font.css");
+@import "font.css";
 // #region loadpage
 #load-page {
     position: fixed;
@@ -93,8 +93,7 @@ h1 {
     @include stripes(-55deg,
     1vh,
     $white,
-    lighten($white,
-    10%));
+    lighten($white, 10%));
     @include vignette(2vw,
     black);
     padding: 1vw;
