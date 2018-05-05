@@ -3,7 +3,9 @@
 // keyboard api
 var Shortcuts = {
     "N": function () {
-        document.getElementById("dictionary").classList.toggle("show");
+        var d = document.getElementById("dictionary");
+        d.scrollTo(0, 0);
+        d.classList.toggle("show");
     }
 };
 var pressedKeys = {};
