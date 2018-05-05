@@ -1,4 +1,3 @@
-@import url(c:\Users\Michael\Desktop\RANDOM WEB\journeyready\font.css);
 .bars {
   background-color: #f3f3f3;
   padding: 1vh 1vw;
@@ -112,6 +111,14 @@
 
 #dictionary-content {
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* hebrew */
+@font-face {
+  font-family: 'txt';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Varela Round Regular"), local("VarelaRound-Regular"), url(https://fonts.gstatic.com/s/varelaround/v9/w8gdH283Tvk__Lua32TysjIfpcuPP9g.woff2) format("woff2");
 }
 
 #load-page {
