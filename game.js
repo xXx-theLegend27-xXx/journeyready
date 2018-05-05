@@ -8,6 +8,26 @@ function dictLink(term, txt) {
     return "<a onclick='showDictionary(\"" + term + "\")'>" + txt + "</a>";
 }
 
+// shows a link at an iframe and sets its height to 100vh, or hide it if it is opened
+// scroll to the iframe if it was closed
+function togglePage(iframeID, link, scrollWithin) {
+    var iframe = document.getElementById(iframeID);
+    if (iframe.getAttribute("open") !== "1") {
+        // show it
+        iframe.style.display = "block";
+        iframe.src = link;
+        iframe.style.height = "100vh";
+        iframe.setAttribute("open", "1");
+        // scroll to iframe
+        (document.getElementById(scrollWithin) || document.body).scrollBy(0, iframe.getBoundingClientRect().top);
+    } else {
+        // hide it
+        iframe.style.display = "hidden";
+        iframe.style.height = "";
+        iframe.setAttribute("open", "0");
+    }
+}
+
 function chance(p) {
     return Math.random() <= p;
 }
@@ -229,6 +249,11 @@ HELPERS SUMMARY:
 chance(a)
 - returns true or false randomally
 - the argument is the probability of true (1 is always true, 0 is always false)
+
+togglePage(iframeID, link, scrollWithin)
+- shows a link at an iframe and sets its height to 100vh
+- or hide it if it is opened
+- scroll to iframe if being opened
 
 refreshBars()
 - sets all of the bar elements width to their value
