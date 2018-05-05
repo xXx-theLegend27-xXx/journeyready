@@ -1,0 +1,59 @@
+@import "mixins.scss";
+@import "colors.scss";
+#dictionary {
+    z-index: 9999;
+    position: fixed;
+    opacity: 0;
+    left: 100%;
+    transition: opacity .4s ease-out, left .4s ease-out;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    background-color: black;
+    color: white;
+    @include stripes(-55deg, 1vh, black, lighten(black, 5%));
+    hr {
+        border-color: white;
+    }
+    padding: 0;
+    overflow: auto;
+}
+
+#close-dictionary {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: white;
+    width: 5vw;
+    height: 5vw;
+    color: black;
+    vertical-align: middle;
+    text-align: center;
+    transition: background-color .1s ease, color .1s ease;
+    &:hover {
+        background-color: black;
+        color: white;
+    }
+    cursor: pointer;
+}
+
+.centered {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#dictionary.show #close-dictionary {
+    display: block;
+}
+
+#dictionary.show {
+    left: 0%;
+    opacity: 1;
+}
+
+#dictionary-content {
+    background-color: rgba(0, 0, 0, .5);
+}

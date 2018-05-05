@@ -1,0 +1,313 @@
+@import "colors.scss";
+@import "mixins.scss";
+@import "bars.scss";
+@import "dictionary.scss";
+@import url("font.css");
+// #region loadpage
+#load-page {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: $white;
+    z-index: 999;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// #region spinner
+#spinner {
+    height: 10vmin;
+    width: 10vmin;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: 0% 0%;
+    background-color: $red;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+#spinner:after {
+    content: "";
+    position: absolute;
+    height: 5vmin;
+    width: 5vmin;
+    background-color: inherit;
+}
+
+#loading-text {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+// #endregion
+// #endregion
+// #region basics
+img {
+    width: 100%;
+}
+
+a {
+    color: $blue;
+    text-decoration: none;
+    transition: color .1s ease;
+    &:hover {
+        color: darken(saturate($blue, 100%), 10%);
+    }
+    cursor: pointer;
+}
+
+body {
+    margin: 0px;
+    font-family: txt, sans-serif;
+    background: url("images/background.png");
+    background-size: 50vh;
+    background-repeat: repeat;
+    /* Otherwise, just make it a static color */
+    background-color: #6A6865;
+    line-height: 1;
+    font-size: 16pt;
+}
+
+/* TEXTS */
+
+h1 {
+    text-align: center;
+}
+
+// #endregion
+// #region tutorial
+#tutorial {
+    @include stripes(-55deg,
+    1vh,
+    $white,
+    lighten($white,
+    10%));
+    @include vignette(2vw,
+    black);
+    padding: 1vw;
+    min-height: calc(100vh - 2vw);
+}
+
+$page-content-width: 80%;
+$page-content-pad: 2%;
+.page-content {
+    margin: 0px ((100% - $page-content-width) / 2 - $page-content-pad);
+    padding: 0px $page-content-pad;
+    width: $page-content-width;
+    padding-bottom: 3vh;
+    margin-bottom: 3%;
+    background-color: white;
+    box-shadow: 0px 0px .7vh black;
+}
+
+// #endregion
+// THE ACTUAL GAME STYLE
+#game-container {
+    max-height: 100vh;
+    overflow: auto;
+}
+
+// #region choices
+#card-display {
+    position: relative;
+    display: table;
+    width: 100%;
+}
+
+#one,
+#two {
+    display: table-row;
+    width: 100%;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.2);
+    text-align: center;
+    font-size: 2.5vw;
+    transition: .15s background-color ease;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.tall #one,
+.tall #two {
+    height: 100%;
+    display: table-cell;
+    width: 22%;
+    font-size: 1em;
+}
+
+#text-one,
+#text-two {
+    text-align: center;
+    height: 100%;
+}
+
+#one:hover,
+#two:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes show {
+    0% {
+        transform: scaleY(0) rotate(5deg) translateY(-100%);
+    }
+    60% {
+        transform: scaleY(0.9) rotate(0deg) translateY(10%);
+    }
+    to {
+        transform: scaleY(1) rotate(0deg) translateY(0%);
+    }
+}
+
+#card-container {
+    display: table-row;
+}
+
+.tall #card-container {
+    display: table-cell;
+}
+
+.card {
+    display: block;
+    margin: 0 auto;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    width: 70%;
+    min-height: 50vh;
+    padding: 2vw;
+    background: url("images/cardback.jpg");
+    background-size: cover;
+    /* If the image can't load, just make it a solid color */
+    background-color: #DFD1C2;
+    border-radius: 1vh;
+    h2 {
+        text-align: center;
+    }
+    animation: show .35s ease-out;
+    box-shadow: .1vh .2vh .8vh black;
+}
+
+// #endregion
+// #region deck picker
+#pick-deck {
+    display: table;
+    width: 100%;
+    border-spacing: 1vw;
+    border-collapse: separate;
+}
+
+$deck-back-animation-time: .15s;
+.deck-back {
+    padding: 2vw;
+    background: url("images/cardback.jpg");
+    background-size: cover;
+    /* If the image can't load, just make it a solid color */
+    background-color: #DFD1C2;
+    border-radius: 1vh;
+    /* Scaling */
+    display: table-cell;
+    min-height: 50vh;
+    min-width: 20%;
+    cursor: pointer;
+    transform-origin: 50% 50%;
+    transform: scale(0.9);
+    transition: transform $deck-back-animation-time ease;
+    &:hover {
+        transform: scale(1);
+    }
+}
+
+// they deck backs should each be a full line when the screen is tall
+.tall #pick-deck {
+    display: block;
+}
+
+.tall .deck-back {
+    padding: 1vh 0;
+    border-spacing: 0;
+    min-height: 0;
+    width: 100%;
+    display: block;
+}
+
+// #endregion
+// EXTRAS
+.left {
+    float: left;
+}
+
+.page-or-more {
+    min-height: 100vh;
+}
+
+hr {
+    border: .3vh black solid;
+}
+
+// #region win and lose screens
+#win-screen,
+#lose-screen {
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: none;
+    button {
+        @include stripes(-145deg,
+        1vh,
+        $yellow,
+        lighten($yellow,
+        10%));
+        @include vignette(2vw,
+        black);
+        padding: 1.5vw;
+        border: none;
+        font-family: inherit;
+        font-size: 1em;
+        transition: box-shadow .2s ease, transform .2s ease;
+        transform-origin: 50% 50%;
+        transform: scale(1);
+    }
+    button:hover {
+        @include vignette(.5vw,
+        black);
+        transform: scale(1.1);
+    }
+    button:active {
+        transform: scale(0.95);
+    }
+}
+
+#win-screen {
+    @include stripes(-55deg,
+    8pt,
+    $green,
+    darken($green,
+    5%))
+}
+
+#lose-screen {
+    color: white;
+    @include stripes(-55deg,
+    8pt,
+    $red,
+    lighten($red,
+    5%))
+}
+
+// #endregion

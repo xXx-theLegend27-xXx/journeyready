@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>משחק מוכנים למסע</title>
+    <link rel="stylesheet" href="ingamestyle.css">
+    <script src="game.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+
+<body>
+    <div id="dictionary">
+        <div id="close-dictionary" onclick="closeDictionary();">
+            <div class="centered">חזור</div>
+        </div>
+        <div class="page-content" id="dictionary-content">
+            <h1>המילון</h1>
+            <p>ההגדרות שאתם פחות מכירים ודברים מבלבלים</p>
+            <h1>ערכים הכרחיים</h1>
+            <h2 id="dict-masa-tzlav">מסע צלב</h2>
+            <hr />
+            <p>היו מסעי מלחמה נוצריים בימי הביניים שמטרתם הייתה לכבוש את ישראל הקדושה מהמוסלמים. מסע הצלב הראשון אורגן ע"י האפיפיור
+                אורבנוס ה-2. המניעים של המשתתפים היו דתיים, מסחריים (להגיע לארץ ישראל שיש בה ים ונמלים), פוליטיים (אנשים
+                עם מעמד נמוך יוכלו להתחיל את חייהם מחדש) ועוד.</p>
+            <p>הלוחמים שהשתתפו נקראו
+                <b>צלבנים.</b>
+            </p>
+            <p>קראו עוד ב-
+                <a target="_blank" href="https://he.wikipedia.org/wiki/%D7%9E%D7%A1%D7%A2%D7%99_%D7%94%D7%A6%D7%9C%D7%91">ויקיפדיה</a>
+            </p>
+
+            <h2 id="dict-feodom">פיאודום</h2>
+            <hr />
+            <p>איזור קטן שנשלט על ידי אדון כחלק מהשיטה הפאודלית.</p>
+            <p>קראו עוד ב-
+                <a target="_blank" href="https://he.wikipedia.org/wiki/%D7%A4%D7%99%D7%90%D7%95%D7%93%D7%9C%D7%99%D7%96%D7%9D">ויקיפדיה</a>
+            </p>
+        </div>
+        <div class="page-or-more"></div>
+    </div>
+    <div id="load-page">
+        <div id="spinner"></div>
+        <h1 id="loading-text">טוען</h1>
+    </div>
+    <div id="win-screen">
+        <h1>ניצחת</h1>
+        <h2>הצלחת לעקוף את הסלג'וקים ולכבוש את ירושלים!</h2>
+        <button onclick="location.reload()">התחל מחדש</button>
+    </div>
+    <div id="lose-screen">
+        <h1>הפסדת</h1>
+        <h2>כי
+            <span id="lose-reason"></span>
+        </h2>
+        <button onclick="location.reload()">נסה שוב</button>
+    </div>
+    <div id="tutorial">
+        <div class="page-content">
+            <h1>משחק "מוכנים למסע"</h1>
+            <h3 style="text-align:center;">משחק מהנה בנושא
+                <a onclick="showDictionary('dict-masa-tzlav')">מסעות הצלב</a>
+            </h3>
+            <h1>סיפור הרקע</h1>
+            <p>פיליפ אוגוסט היה מלך הפרנקים, בנו של המלך לואי השביעי. הוא נולד בשנת 1165 בפריז ונפטר בגיל 57. היה לו בן ושמו
+                לואי השמיני, כמסורת משפחתו וכהמשך ללואי השביעי. שאר ילדיו היו מרי, פיליפ מבולון ופטר קרלוטוס.</p>
+
+            <p>הוא היה 43 שנה בכהונתו ועשה הרבה - הוא השתתף במסע הצלב השלישי, חיזק את המלוכה בצרפת שהייתה בחלקה פאודלית ואף
+                חידש חלקים רבים בפריז. מסע הצלב השלישי הגיע לארץ, שיחרר את ארסוף, התקרב לירושלים, אבל אז המשתתפים ברחו מירושלים
+                שהייתה בשליטה מוסלמית. הם כבשו גם את עכו, הגיעו ליפו, אך לא יכלו להמשיך לאחר יפו בגלל חולשתם - ולכן הסכימו
+                עם צלאח א-דין, המנהיג המוסלמי, על הסכם שלום. לאחר מכן הם יצאו מארץ ישראל.</p>
+
+            <p>
+                מטרתך היא לשחק כפיליפ אוגוסט, על פי קלפים, ולהנהיג את הממלכה כולה להשיג כמה שיותר כוח כדי להביס את המוסלמים בארץ ישראל.
+            </p>
+
+            <h2>מהלך המשחק</h2>
+            <p>המשחק הוא משחק קלפים וירטואלי בו בכל תור פותחים קלף, קוראים את נושאו והמידע שמצורף אליו, ובוחרים אחת משתי האפשרויות
+                הנתונות.
+            </p>
+            <img src="images/cardexample.png" alt="טוען תמונה לדוגמה" />
+            <p>ישנם מדדים:</p>
+            <ul>
+                <li>מזון</li>
+                <li>שטח (שמשמש גם ככסף)</li>
+                <li>כוח אדם</li>
+                <li>כוח התורכים</li>
+            </ul>
+            <p>אסור שאף מד יתרוקן (למשל: מעט מדי כוח אדם, מהפכת שלטון), וכך אתה נפסל. המקסימום של כל מדד הוא 100. (100 שטח זה
+                הכי הרבה שיכול להיות לשחקן)
+            </p>
+
+            <p>כל המדדים מתחילים ב-20.</p>
+            <p>המד המיוחד הוא כוח הסלג'וקים - כוח הסלג'וקים גדל בכל תור פי 1.03. בנוסף, אם כוח הסלג'וקים עולה מעל 100 - הם בלתי
+                מנוצחים, והמשחק נגמר. כוח הסלג'וקים מתחיל ב-35.</p>
+
+            <div class="bars">
+                <div>
+                    <span>כוח הסלג'וקים
+                        <span>35</span>
+                    </span>
+
+                    <div class="bar">
+                        <div class="bar-content red-bar left" style="width: 35%;">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <span>שטח
+                        <span>20</span>
+                    </span>
+
+                    <div class="bar">
+                        <div class="bar-content green-bar left" style="width: 20%;">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <span>מזון
+                        <span>20</span>
+                    </span>
+
+                    <div class="bar">
+                        <div class="bar-content brown-bar left" style="width: 20%;">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <span>כוח אדם
+                        <span>20</span>
+                    </span>
+
+                    <div class="bar">
+                        <div class="bar-content blue-bar left" style="width: 20%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>המדדים תלויים אחד בשני:</h3>
+            <ul>
+                <li>כמות כוח האדם מורידה מהמזון בכל תור</li>
+                <li>כמות השטח מוסיפה למזון בכל תור</li>
+                <li>אפשר להשתמש בכוח אדם כדי להילחם ולהשיג יותר שטח. המטרה של המשחק היא להשיג הרבה כוח אדם.</li>
+                <li>אפשר להשתמש בשטח כדי לשלם על כוח אדם.</li>
+            </ul>
+
+            <h2 style="font-weight:bold;background-color:black;color:white;padding:.2em;border-radius:.1em;">מטרת המשחק היא להיות בבעלות יותר כוח אדם מכוח הסלג'וקים</h2>
+        </div>
+        <a href="#game-container" style="color:red;font-size:10vw;text-align:center;display:block;text-decoration:none;">שחק!</a>
+    </div>
+
+
+    <div id="game-container" class="page-or-more">
+        <div class="bars">
+            <div>
+                <span>כוח הסלג'וקים
+                    <span id="enemy-bar-text">0</span>
+                </span>
+
+                <div class="bar">
+                    <div class="bar-content red-bar left" id="enemy-bar">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <span>שטח
+                    <span id="land-bar-text">0</span>
+                </span>
+
+                <div class="bar">
+                    <div class="bar-content green-bar left" id="land-bar">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <span>מזון
+                    <span id="food-bar-text">0</span>
+                </span>
+
+                <div class="bar">
+                    <div class="bar-content brown-bar left" id="food-bar">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <span>כוח אדם
+                    <span id="soldier-bar-text">0</span>
+                </span>
+
+                <div class="bar">
+                    <div class="bar-content blue-bar left" id="soldier-bar">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--whatever goes after the bars-->
+        <div id="game">
+            <!-- The place where you pick your deck -->
+            <div id="pick-deck">
+
+            </div>
+
+            <!-- The card display is shown when a choice is given -->
+            <div id="card-display" style="display:none;">
+                <div id="two">
+                    <span id="text-two"></span>
+                </div>
+
+                <div id="card-holder">
+                    <div class="card">
+                        <h2 id="card-title"></h2>
+                        <hr>
+                        <img id="card-image" alt="" src="" style="width:35%;float: left;">
+                        <p id="card-description"></p>
+                    </div>
+                </div>
+
+                <div id="one">
+                    <span id="text-one"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

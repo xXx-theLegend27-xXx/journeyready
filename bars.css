@@ -1,0 +1,55 @@
+.bars {
+  background-color: #f3f3f3;
+  padding: 1vh 1vw;
+  display: table;
+  /* width is 100% - padding*/
+  width: calc(100% - 2vw);
+  box-shadow: 0px .3vh 1vh black;
+  border-spacing: 1vw;
+}
+
+/* ANY BAR */
+.bar {
+  background-color: #dadada;
+  display: inline-block;
+  border-radius: .5vh;
+  padding: .3vh;
+}
+
+.bar-content {
+  border-radius: inherit;
+  width: 0;
+  transition: width .1s ease-out;
+  height: 1em;
+  position: relative;
+}
+
+.bars > div {
+  display: table-cell;
+  width: 20%;
+}
+
+.bars > div > * {
+  width: 100%;
+}
+
+.red-bar {
+  background: repeating-linear-gradient(45deg, #e33d3d, #e33d3d 6pt, #e12f2f 6pt, #e12f2f 12pt);
+}
+
+.green-bar {
+  background: repeating-linear-gradient(45deg, #31d143, #31d143 6pt, #2dc63e 6pt, #2dc63e 12pt);
+}
+
+.yellow-bar {
+  background: repeating-linear-gradient(45deg, #ffce19, #ffce19 6pt, #ffca09 6pt, #ffca09 12pt);
+}
+
+.brown-bar {
+  background: repeating-linear-gradient(45deg, #d35704, #d35704 6pt, #c35104 6pt, #c35104 12pt);
+}
+
+.blue-bar {
+  background: repeating-linear-gradient(45deg, #99b9ff, #99b9ff 6pt, #89afff 6pt, #89afff 12pt);
+}
+/*# sourceMappingURL=bars.css.map */

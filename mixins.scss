@@ -1,0 +1,11 @@
+@mixin stripes($deg, $distance, $color1, $color2) {
+    background: repeating-linear-gradient($deg, $color1, $color1 $distance, $color2 $distance, $color2 $distance * 2);
+}
+
+@mixin vignette($blur, $color) {
+    box-shadow: 0px 0px $blur $color inset;
+}
+
+@mixin barStripes($color) {
+    @include stripes(45deg, 6pt, lighten($color, 1.5%), darken($color, 1.5%));
+}

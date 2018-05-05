@@ -1,0 +1,393 @@
+@import url("font.css");
+.bars {
+  background-color: #f3f3f3;
+  padding: 1vh 1vw;
+  display: table;
+  /* width is 100% - padding*/
+  width: calc(100% - 2vw);
+  box-shadow: 0px .3vh 1vh black;
+  border-spacing: 1vw;
+}
+
+/* ANY BAR */
+.bar {
+  background-color: #dadada;
+  display: inline-block;
+  border-radius: .5vh;
+  padding: .3vh;
+}
+
+.bar-content {
+  border-radius: inherit;
+  width: 0;
+  transition: width .1s ease-out;
+  height: 1em;
+  position: relative;
+}
+
+.bars > div {
+  display: table-cell;
+  width: 20%;
+}
+
+.bars > div > * {
+  width: 100%;
+}
+
+.red-bar {
+  background: repeating-linear-gradient(45deg, #e33d3d, #e33d3d 6pt, #e12f2f 6pt, #e12f2f 12pt);
+}
+
+.green-bar {
+  background: repeating-linear-gradient(45deg, #31d143, #31d143 6pt, #2dc63e 6pt, #2dc63e 12pt);
+}
+
+.yellow-bar {
+  background: repeating-linear-gradient(45deg, #ffce19, #ffce19 6pt, #ffca09 6pt, #ffca09 12pt);
+}
+
+.brown-bar {
+  background: repeating-linear-gradient(45deg, #d35704, #d35704 6pt, #c35104 6pt, #c35104 12pt);
+}
+
+.blue-bar {
+  background: repeating-linear-gradient(45deg, #99b9ff, #99b9ff 6pt, #89afff 6pt, #89afff 12pt);
+}
+
+#dictionary {
+  z-index: 9999;
+  position: fixed;
+  opacity: 0;
+  left: 100%;
+  transition: opacity .4s ease-out, left .4s ease-out;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  background-color: black;
+  color: white;
+  background: repeating-linear-gradient(-55deg, black, black 1vh, #0d0d0d 1vh, #0d0d0d 2vh);
+  padding: 0;
+  overflow: auto;
+}
+
+#dictionary hr {
+  border-color: white;
+}
+
+#close-dictionary {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: white;
+  width: 5vw;
+  height: 5vw;
+  color: black;
+  vertical-align: middle;
+  text-align: center;
+  transition: background-color .1s ease, color .1s ease;
+  cursor: pointer;
+}
+
+#close-dictionary:hover {
+  background-color: black;
+  color: white;
+}
+
+.centered {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#dictionary.show #close-dictionary {
+  display: block;
+}
+
+#dictionary.show {
+  left: 0%;
+  opacity: 1;
+}
+
+#dictionary-content {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#load-page {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f3f3f3;
+  z-index: 999;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#spinner {
+  height: 10vmin;
+  width: 10vmin;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: 0% 0%;
+  background-color: #e23636;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+#spinner:after {
+  content: "";
+  position: absolute;
+  height: 5vmin;
+  width: 5vmin;
+  background-color: inherit;
+}
+
+#loading-text {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  color: #91b4ff;
+  text-decoration: none;
+  transition: color .1s ease;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #5e91ff;
+}
+
+body {
+  margin: 0px;
+  font-family: txt, sans-serif;
+  background: url("images/background.png");
+  background-size: 50vh;
+  background-repeat: repeat;
+  /* Otherwise, just make it a static color */
+  background-color: #6A6865;
+  line-height: 1;
+  font-size: 16pt;
+}
+
+/* TEXTS */
+h1 {
+  text-align: center;
+}
+
+#tutorial {
+  background: repeating-linear-gradient(-55deg, #f3f3f3, #f3f3f3 1vh, white 1vh, white 2vh);
+  box-shadow: 0px 0px 2vw black inset;
+  padding: 1vw;
+  min-height: calc(100vh - 2vw);
+}
+
+.page-content {
+  margin: 0px 8%;
+  padding: 0px 2%;
+  width: 80%;
+  padding-bottom: 3vh;
+  margin-bottom: 3%;
+  background-color: white;
+  box-shadow: 0px 0px .7vh black;
+}
+
+#game-container {
+  max-height: 100vh;
+  overflow: auto;
+}
+
+#card-display {
+  position: relative;
+  display: table;
+  width: 100%;
+}
+
+#one,
+#two {
+  display: table-row;
+  width: 100%;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  font-size: 2.5vw;
+  transition: .15s background-color ease;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.tall #one,
+.tall #two {
+  height: 100%;
+  display: table-cell;
+  width: 22%;
+  font-size: 1em;
+}
+
+#text-one,
+#text-two {
+  text-align: center;
+  height: 100%;
+}
+
+#one:hover,
+#two:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes show {
+  0% {
+    transform: scaleY(0) rotate(5deg) translateY(-100%);
+  }
+  60% {
+    transform: scaleY(0.9) rotate(0deg) translateY(10%);
+  }
+  to {
+    transform: scaleY(1) rotate(0deg) translateY(0%);
+  }
+}
+
+#card-container {
+  display: table-row;
+}
+
+.tall #card-container {
+  display: table-cell;
+}
+
+.card {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2vh;
+  margin-bottom: 3vh;
+  width: 70%;
+  min-height: 50vh;
+  padding: 2vw;
+  background: url("images/cardback.jpg");
+  background-size: cover;
+  /* If the image can't load, just make it a solid color */
+  background-color: #DFD1C2;
+  border-radius: 1vh;
+  animation: show .35s ease-out;
+  box-shadow: .1vh .2vh .8vh black;
+}
+
+.card h2 {
+  text-align: center;
+}
+
+#pick-deck {
+  display: table;
+  width: 100%;
+  border-spacing: 1vw;
+  border-collapse: separate;
+}
+
+.deck-back {
+  padding: 2vw;
+  background: url("images/cardback.jpg");
+  background-size: cover;
+  /* If the image can't load, just make it a solid color */
+  background-color: #DFD1C2;
+  border-radius: 1vh;
+  /* Scaling */
+  display: table-cell;
+  min-height: 50vh;
+  min-width: 20%;
+  cursor: pointer;
+  transform-origin: 50% 50%;
+  transform: scale(0.9);
+  transition: transform 0.15s ease;
+}
+
+.deck-back:hover {
+  transform: scale(1);
+}
+
+.tall #pick-deck {
+  display: block;
+}
+
+.tall .deck-back {
+  padding: 1vh 0;
+  border-spacing: 0;
+  min-height: 0;
+  width: 100%;
+  display: block;
+}
+
+.left {
+  float: left;
+}
+
+.page-or-more {
+  min-height: 100vh;
+}
+
+hr {
+  border: .3vh black solid;
+}
+
+#win-screen,
+#lose-screen {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: none;
+}
+
+#win-screen button,
+#lose-screen button {
+  background: repeating-linear-gradient(-145deg, #ffcc11, #ffcc11 1vh, #ffd744 1vh, #ffd744 2vh);
+  box-shadow: 0px 0px 2vw black inset;
+  padding: 1.5vw;
+  border: none;
+  font-family: inherit;
+  font-size: 1em;
+  transition: box-shadow .2s ease, transform .2s ease;
+  transform-origin: 50% 50%;
+  transform: scale(1);
+}
+
+#win-screen button:hover,
+#lose-screen button:hover {
+  box-shadow: 0px 0px 0.5vw black inset;
+  transform: scale(1.1);
+}
+
+#win-screen button:active,
+#lose-screen button:active {
+  transform: scale(0.95);
+}
+
+#win-screen {
+  background: repeating-linear-gradient(-55deg, #2ecc40, #2ecc40 8pt, #29b739 8pt, #29b739 16pt);
+}
+
+#lose-screen {
+  color: white;
+  background: repeating-linear-gradient(-55deg, #e23636, #e23636 8pt, #e54c4c 8pt, #e54c4c 16pt);
+}
+/*# sourceMappingURL=ingamestyle.css.map */

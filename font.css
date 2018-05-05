@@ -1,0 +1,16 @@
+/* hebrew */
+@font-face {
+  font-family: 'txt';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Varela Round Regular"), local("VarelaRound-Regular"), url(font.woff2) format("woff2");
+}
+
+/* latin */
+@font-face {
+  font-family: 'txt';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Varela Round Regular"), local("VarelaRound-Regular"), url(font.woff2) format("woff2");
+}
+/*# sourceMappingURL=font.css.map */
